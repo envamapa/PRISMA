@@ -24,14 +24,9 @@
 	<s:actionerror theme="jquery" />
 	<s:fielderror fieldName ="campos" cssClass="error" theme="jquery" />
 	<br />
-	
-	<p class="instrucciones">Ingrese la información solicitada.</p>
-	<s:form autocomplete="off" id="frmCasoUso" theme="simple"
-		action="%{#pageContext.request.contextPath}/configuracion-caso-uso!configurar" method="post" onsubmit="return prepararEnvio();">
-		<s:hidden name="_method" value="put" />
-		
-		
-		<div class="formulario" id="formularioEntradas">
+	<!-- ESTO ES DE PRUEBA. ESTÁTICO. SE TIENE QUE QUITAR -->
+	<p class="instrucciones">Configuración para la trayectoria principal.</p>
+	<div class="formulario">
 			<div class="tituloFormulario">Configuración de las Entradas</div>
 			<div class="seccion">
 				<p class="instrucciones">Ingrese los valores de los atributos <i>name</i> y <i>value</i> de los input HTML de cada una de las Entradas. Los valores mostrados en
@@ -40,19 +35,101 @@
 			<div id="seccionEntradas">
 				<table class="seccion" id="tablaEntradas">
 				<!--  -->
+					<tbody>
+						<tr>
+							<td></td>
+							<td class="ui-widget"><center>Name</center></td>
+							<td class="ui-widget"><center>Value</center></td>
+						</tr>
+						<tr>
+							<td class="label obligatorio">CURP</td>
+							<td><input type="text" class="inputFormulario ui-widget" id="input-etiqueta-entrada-14" value="model.curp"/></td>
+							<td><input type="text" class="inputFormulario ui-widget" id="input-etiqueta-entrada-14" value="nw"/></td>
+						</tr>
+						<tr>
+							<td class="label obligatorio">Nombre</td>
+							<td><input type="text" class="inputFormulario ui-widget" id="input-etiqueta-entrada-14" value="model.nombre"/></td>
+							<td><input type="text" class="inputFormulario ui-widget" id="input-etiqueta-entrada-14" value="fwaq"/></td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 		</div>
-		<div class="formulario" id="formularioAcciones">
+	<div class="formulario">
 			<div class="tituloFormulario">Configuración de las Acciones</div>
 			<div class="seccion">
 				<p class="instrucciones">Ingrese la URL destino de cada una de las Acciones.</p>
 			</div>
 			<div class="seccion" id="seccionURL">
-				<!--  -->
+				<div class="subtituloFormulario">
+					<a class="referencia" href="#" onclick="mostrarPantalla('null');">Pantalla IUE2 Gestionar personal</a>
+				</div>
+				<table id="tabla-acciones-45">
+					<tbody>
+						<tr>
+							<td></td>
+							<td class="ui-widget"><center>URL</center></td>
+							<td class="ui-widget"><center>Método</center></td>
+						</tr>
+						<tr>
+							<td class="label obligatorio">Botón Registrar</td>
+							<td><input type="text" class="inputFormularioGrande ui-widget" id="input-url-accion-12" value="prisma/personal/new"/></td>
+							<td>
+								<select id="input-metodo-accion-12"> 
+								<option value="GET">GET</option>
+								<option value="POST">POST</option>
+								</select>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
-		<div class="formulario" id="formularioReglasNegocio">
+		<div class="formulario">
+			<div class="tituloFormulario">Configuración de las Pantallas</div>
+			<div class="seccion">
+				<p class="instrucciones">Es necesario que indique una cadena con la que cada Pantalla pueda ser identificada, como el título o algún párrafo que contenga.</p>
+			</div>
+			
+			<div class="seccion" id="seccionPantallas">
+				<table class="seccion" id="tablaPantallas">
+					<tbody>
+						<tr>
+							<td class="label obligatorio">IUE2 Gestionar personal</td>
+							<td><textarea class="ui-widget inputFormularioGrande" id="input-patron-pantalla-45">Gestionar Personal</textarea></td>
+						</tr>
+						</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- ESTO ES DE PRUEBA. ESTÁTICO. SE TIENE QUE QUITAR -->
+	<!--<s:form autocomplete="off" id="frmCasoUso" theme="simple"
+		action="%{#pageContext.request.contextPath}/configuracion-caso-uso!configurar" method="post" onsubmit="return prepararEnvio();">-->
+		<!--<s:hidden name="_method" value="put" />-->
+		
+		
+		  <!--<div class="formulario">
+			<div class="tituloFormulario">Configuración de las Entradas</div>
+			<div class="seccion">
+				<p class="instrucciones">Ingrese los valores de los atributos <i>name</i> y <i>value</i> de los input HTML de cada una de las Entradas. Los valores mostrados en
+					<i>value</i> son propuestas generadas a partir de la especificación de los atributos.</p>
+			</div>
+			<div id="seccionEntradas">
+				<table class="seccion" id="tablaEntradas">
+		
+				</table>
+			</div>
+		</div>-->
+		<!--<div class="formulario" id="formularioAcciones">
+			<div class="tituloFormulario">Configuración de las Acciones</div>
+			<div class="seccion">
+				<p class="instrucciones">Ingrese la URL destino de cada una de las Acciones.</p>
+			</div>
+			<div class="seccion" id="seccionURL">
+		
+			</div>
+		</div>-->
+		<!--<div class="formulario" id="formularioReglasNegocio">
 			<div class="tituloFormulario">Configuración de las Reglas de negocio</div>
 			<div class="seccion">
 				<p class="instrucciones">Es esta sección deberá ingresar las queries necesarias para realizar consultas a la base de datos. Las Reglas de negocio
@@ -64,34 +141,34 @@
 			</div>
 			<div id="seccionReglasNegocio">
 				<div class="seccion" id="seccionRN">
-					<!--  -->
+			
 				</div>
 				<table class="seccion" id="tablaReglasNegocio">
-				<!--  -->
+				
 				</table>
 			</div>
-		</div>
-		<div class="formulario" id="formularioParametros">
+		</div>-->
+		<!--<div class="formulario" id="formularioParametros">
 			<div class="tituloFormulario">Configuración de los Parámetros</div>
 			<div class="seccion">
 				<p class="instrucciones">Ingrese el valor que tomará cada uno de los Parámetros de los Mensajes, en caso de que no sea posible determinarlos 
 				puede dejar los campos vacíos y el sistema guardará el nombre del Parámetro como su valor para que puedan ser fácilmente identificados dentro del plan de pruebas.</p>
 			</div>
 			<div class="seccion" id="seccionParametros">
-				<!--  -->
+				
 			</div>
-		</div>
-		<div class="formulario" id="formularioPantallas">
+		</div>-->
+		<!--<div class="formulario" id="formularioPantallas">
 			<div class="tituloFormulario">Configuración de las Pantallas</div>
 			<div class="seccion">
 				<p class="instrucciones">Es necesario que indique una cadena con la que cada Pantalla pueda ser identificada, como el título o algún párrafo que contenga.</p>
 			</div>
 			<div class="seccion" id="seccionPantallas">
 				<table class="seccion" id="tablaPantallas">
-				<!--  -->
+				
 				</table>
 			</div>
-		</div>
+		</div>-->
 		<br />
 		<div align="center">
 			<s:url var="urlAnterior"
@@ -121,7 +198,7 @@
 		<s:hidden name="jsonReferenciasParametrosMensaje" id="jsonReferenciasParametrosMensaje" value="%{jsonReferenciasParametrosMensaje}"/>
 		<s:hidden name="jsonPantallas" id="jsonPantallas" value="%{jsonPantallas}"/>
 		<s:hidden name="jsonImagenesPantallasAcciones" id="jsonImagenesPantallasAcciones" value="%{jsonImagenesPantallasAcciones}"/>
-	</s:form>
+	<!--</s:form>-->
 	<sj:dialog id="pantallaDialog" title="Previsualizar Pantalla" autoOpen="false"
 		minHeight="200" minWidth="700" modal="true" draggable="true">
 			<div class="marcoImagen" id="marco-pantalla">

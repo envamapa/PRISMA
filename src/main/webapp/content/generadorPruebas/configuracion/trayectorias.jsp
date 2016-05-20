@@ -38,13 +38,41 @@
 					</tr>
 				</thead>
 				<tbody>
-				<s:iterator value="listCU" var="cu">
+				<tr>
+						<td>Trayectoria principal</td>
+						<td>Configurada</td>
+						<td align="center">
+							<s:url var="urlConfigurarTrayectoria"
+									value="%{#pageContext.request.contextPath}/configuracion-trayectoria!prepararConfiguracionTrayectoria">
+									<s:param name="idCUPrevio" value="%{#cu.id}"></s:param>
+							</s:url>
+						<s:a href="%{urlConfigurarTrayectoria}">			
+							<img id="" class="button" title="Configurar Caso de uso"
+											src="${pageContext.request.contextPath}/resources/images/icons/configurar.png" />
+						</s:a>
+						</td>
+				</tr>
+				<tr>
+						<td>Trayectoria alternativa A</td>
+						<td>No configurada</td>
+						<td align="center">
+							<s:url var="urlConfigurarTrayectoria"
+									value="%{#pageContext.request.contextPath}/configuracion-trayectoria!prepararConfiguracionTrayectoria">
+									<s:param name="idCUPrevio" value="%{#cu.id}"></s:param>
+							</s:url>
+						<s:a href="%{urlConfigurarTrayectoria}">			
+							<img id="" class="button" title="Configurar Caso de uso"
+											src="${pageContext.request.contextPath}/resources/images/icons/configurar.png" />
+						</s:a>
+						</td>
+				</tr>
+				<!--<s:iterator value="listCU" var="cu">
 					<tr class="${'filaCU'}${cu.estadoElemento.id}">
 						<td><s:property value="%{#cu.clave + #cu.numero + ' ' +#cu.nombre}"/></td>
 						<td><s:property value="%{#cu.estadoElemento.nombre}"/></td>
-						<td align="center">
+						<td align="center">-->
 							<!-- Configurar caso de uso -->
-							<s:url var="urlConfigurarCU"
+							<!--<s:url var="urlConfigurarCU"
 								value="%{#pageContext.request.contextPath}/configuracion-casos-uso-previos!prepararConfiguracionCasoUso">
 								<s:param name="idCUPrevio" value="%{#cu.id}"></s:param>
 							</s:url>			
@@ -54,7 +82,7 @@
 							</s:a>
 						</td>
 					</tr>
-				</s:iterator>
+				</s:iterator>-->
 				</tbody>
 			</table>
 			</div>
@@ -63,13 +91,13 @@
 		<br />
 		<div align="center">
 			<s:url var="urlAnterior"
-				value="%{#pageContext.request.contextPath}/configuracion-general!prepararConfiguracion">
+				value="%{#pageContext.request.contextPath}/configuracion-casos-uso-previos!prepararConfiguracion">
 			</s:url>
 			<input class="boton" type="button"
 				onclick="location.href='${urlAnterior}?idCU=${idCU}'"
 				value="Anterior" />
 		
-			<s:submit class="boton" value="Siguiente"/>
+			<s:submit class="boton" value="Siguiente"/><!--Se supone que al darle click en siguiente, se finaliza la configuración. -->
 
 			<s:url var="urlGestionarCU"
 				value="%{#pageContext.request.contextPath}/cu">
