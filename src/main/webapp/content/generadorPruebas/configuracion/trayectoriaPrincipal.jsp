@@ -8,7 +8,7 @@
 <head>
 <title>Configuración Trayectoria Principal</title>
 <![CDATA[
-	<script type="text/javascript" charset="utf8" src="${pageContext.request.contextPath}/content/generadorPruebas/configuracion/js/casoUso.js"></script>
+	<script type="text/javascript" charset="utf8" src="${pageContext.request.contextPath}/content/generadorPruebas/configuracion/js/trayectoria.js"></script>
 	<script type="text/javascript" charset="utf8" src="${pageContext.request.contextPath}/resources/scripts/constructores.js"></script>
 	<script type="text/javascript" charset="utf8" src="${pageContext.request.contextPath}/resources/scripts/validaciones.js"></script>
 		
@@ -55,6 +55,8 @@
 				</table>
 			</div>
 		</div>
+<s:form autocomplete="off" id="frmCasoUso" theme="simple"
+		action="%{#pageContext.request.contextPath}/configuracion-trayectorias!prepararConfiguracion" method="post">
 	<div class="formulario">
 			<div class="tituloFormulario">Configuración de las Acciones</div>
 			<div class="seccion">
@@ -102,6 +104,29 @@
 				</table>
 			</div>
 		</div>
+		<br />
+		<div align="center">
+			<s:url var="urlAnterior"
+				value="%{#pageContext.request.contextPath}/configuracion-trayectorias!prepararConfiguracion">
+			</s:url>
+			<input class="boton" type="button"
+				onclick="location.href='${urlAnterior}?idCU=${idCU}'"
+				value="Anterior" />
+			<input class="boton" type="button"
+				onclick="guardarSalir();"
+				value="Guardar" />
+			<input class="submit" type="button"
+				onclick="aceptar();"
+				value="Finalizar" />
+
+			<s:url var="urlGestionarCU"
+				value="%{#pageContext.request.contextPath}/cu">
+			</s:url>
+			<input class="boton" type="button"
+				onclick="location.href='${urlGestionarCU}'"
+				value="Cancelar" />
+		</div>
+		</s:form>
 		<!-- ESTO ES DE PRUEBA. ESTÁTICO. SE TIENE QUE QUITAR -->
 	<!--<s:form autocomplete="off" id="frmCasoUso" theme="simple"
 		action="%{#pageContext.request.contextPath}/configuracion-caso-uso!configurar" method="post" onsubmit="return prepararEnvio();">-->
@@ -169,7 +194,7 @@
 				</table>
 			</div>
 		</div>-->
-		<br />
+		<!--<br />
 		<div align="center">
 			<s:url var="urlAnterior"
 				value="%{#pageContext.request.contextPath}/configuracion-casos-uso-previos!prepararConfiguracion">
@@ -190,7 +215,7 @@
 			<input class="boton" type="button"
 				onclick="location.href='${urlGestionarCU}'"
 				value="Cancelar" />
-		</div>
+		</div>-->
 		
 		<s:hidden name="jsonAcciones" id="jsonAcciones" value="%{jsonAcciones}"/>
 		<s:hidden name="jsonEntradas" id="jsonEntradas" value="%{jsonEntradas}"/>

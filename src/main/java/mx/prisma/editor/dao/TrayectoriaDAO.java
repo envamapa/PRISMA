@@ -3,9 +3,13 @@ package mx.prisma.editor.dao;
 
 import mx.prisma.dao.GenericDAO;
 import mx.prisma.editor.model.Actualizacion;
+import mx.prisma.editor.model.CasoUso;
 import mx.prisma.editor.model.Trayectoria;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 
 public class TrayectoriaDAO extends GenericDAO {
 
@@ -66,6 +70,26 @@ public class TrayectoriaDAO extends GenericDAO {
 
 	}
 	
+	//Crear método para consultar trayectoria.elementoid = casoUso.elementoid.
+	@SuppressWarnings("unchecked")
+	public List<Trayectoria> consultarTrayectoriaxCasoUso(CasoUso idCaso){
+		List<Trayectoria> listTrayectoria = null;
+		try{
+			System.out.println("Id caso: "+idCaso.getId());
+			session.beginTransaction();
+		    Query query = session.createQuery("from Trayectoria as t,CasoUso as c where t.id= :idCaso");
+		    query.setParameter("idCaso", idCaso.getId());
+		    listTrayectoria =  query.list();
+			session.getTransaction().commit();
+		   
+		} catch (HibernateException he) {
+			he.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		 return listTrayectoria;
+		 //return trayectoria;
+	}
+
 	public void eliminarTrayectoria(Trayectoria trayectoria) {
 
 		try {

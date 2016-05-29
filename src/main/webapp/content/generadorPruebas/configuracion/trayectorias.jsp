@@ -30,9 +30,9 @@
 			<div class="tituloFormulario">Trayectorias</div>
 			<div class="seccion">
 				<table id="gestion" class="tablaGestion" cellspacing="0" width="100%"> 
-				<thead>
+				<!-- <thead>
 					<tr>
-						<th><s:text name="colCasoUso"/></th>
+						<th><s:text name="colTrayectoria"/></th>
 						<th style="width: 20%;"><s:text name="colEstado"/></th>
 						<th style="width: 20%;"><s:text name="colAcciones"/></th>
 					</tr>
@@ -65,24 +65,32 @@
 											src="${pageContext.request.contextPath}/resources/images/icons/configurar.png" />
 						</s:a>
 						</td>
-				</tr>
-				<!--<s:iterator value="listCU" var="cu">
-					<tr class="${'filaCU'}${cu.estadoElemento.id}">
-						<td><s:property value="%{#cu.clave + #cu.numero + ' ' +#cu.nombre}"/></td>
-						<td><s:property value="%{#cu.estadoElemento.nombre}"/></td>
-						<td align="center">-->
-							<!-- Configurar caso de uso -->
-							<!--<s:url var="urlConfigurarCU"
-								value="%{#pageContext.request.contextPath}/configuracion-casos-uso-previos!prepararConfiguracionCasoUso">
-								<s:param name="idCUPrevio" value="%{#cu.id}"></s:param>
+				</tr>-->
+				<thead>
+					<tr>
+						<th><s:text name="colTrayectoria"/></th>
+						<th style="width: 20%;"><s:text name="colEstado"/></th>
+						<th style="width: 20%;"><s:text name="colAcciones"/></th>
+					</tr>
+				</thead>
+				<tbody>
+				<s:iterator value="listTrayectoria" var="trayectoria" status="s">
+					<tr class="${'filaCU'}${trayectoria.id}">
+						<td><s:property value="%{#trayectoria.clave}"/></td>
+						<td><s:property value="Cualquier cosa"/></td>
+						
+						<td align="center">
+							<s:url var="urlConfigurarTrayectoria"
+								value="%{#pageContext.request.contextPath}/configuracion-trayectoria!prepararConfiguracionTrayectoria">
+								<s:param name="idTrayectoria" value="%{#trayectoria.id}"></s:param>
 							</s:url>			
-							<s:a href="%{urlConfigurarCU}">
+							<s:a href="%{urlConfigurarTrayectoria}">
 								<img id="" class="button" title="Configurar Caso de uso"
 										src="${pageContext.request.contextPath}/resources/images/icons/configurar.png" />
 							</s:a>
 						</td>
-					</tr>
-				</s:iterator>-->
+					  </tr>
+				</s:iterator>
 				</tbody>
 			</table>
 			</div>

@@ -91,7 +91,7 @@
 			<div class="tituloFormulario">Trayectorias de la Prueba</div>
 			<p class="instrucciones">Seleccione las trayectorias que desea validar en esta prueba.</p>
 			<table class="seccion" cellspacing="0" width="100%">
-				<tr>
+				<!-- <tr>
 					<td><p class="instrucciones"><input type="checkbox" value="1"/>Seleccionar todas</p></td>
 					<td><p class="instrucciones"><input type="checkbox" value="1"/>Trayectoria alternativa C</p></td>
 				</tr>
@@ -102,7 +102,38 @@
 				<tr>
 					<td><p class="instrucciones"><input type="checkbox" value="1"/>Trayectoria alternativa A</p></td>
 					<td><p class="instrucciones"><input type="checkbox" value="1"/>Trayectoria alternativa E</p></td>
-				</tr>
+				</tr>-->
+				
+				
+				<thead>
+					<tr>
+						<th><s:text name="colCasoUso"/></th>
+						<th style="width: 20%;"><s:text name="colEstado"/></th>
+						<th style="width: 20%;"><s:text name="colAcciones"/></th>
+					</tr>
+				</thead>
+				<tbody>
+				<s:iterator value="listCU" var="cu">
+					<tr class="${'filaCU'}${cu.estadoElemento.id}">
+						<td><s:property value="%{#cu.clave + #cu.numero + ' ' +#cu.nombre}"/></td>
+						<td><s:property value="%{#cu.estadoElemento.nombre}"/></td>
+						<td align="center">
+							<!-- Configurar caso de uso -->
+							<s:url var="urlConfigurarCU"
+								value="%{#pageContext.request.contextPath}/configuracion-casos-uso-previos!prepararConfiguracionCasoUso">
+								<s:param name="idCUPrevio" value="%{#cu.id}"></s:param>
+							</s:url>			
+							<s:a href="%{urlConfigurarCU}">
+								<img id="" class="button" title="Configurar Caso de uso"
+										src="${pageContext.request.contextPath}/resources/images/icons/configurar.png" />
+							</s:a>
+						</td>
+					</tr>
+				</s:iterator>
+				</tbody>
+				
+				
+				
 			</table>
 			
 			

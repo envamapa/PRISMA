@@ -267,6 +267,23 @@ public class TrayectoriaBs {
 		}
 		return trayectoria;
 	}
+	
+	public static List<Trayectoria> consultarTrayectoriaxCasoUso(CasoUso idCaso){
+		Trayectoria trayectoria = null;
+		List<Trayectoria> listTrayectoria=null;
+		try{
+			//trayectoria = new TrayectoriaDAO().consultarTrayectoriaxCasoUso(idCaso);
+			listTrayectoria = new TrayectoriaDAO().consultarTrayectoriaxCasoUso(idCaso);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		if (listTrayectoria == null) {
+			throw new PRISMAException(
+					"No se puede consultar la trayectoria por el id.", "MSG16",
+					new String[] { "La", "trayectoria" });
+		}
+		return listTrayectoria;
+	}
 
 	public static void preAlmacenarObjetosToken(Trayectoria trayectoria) {
 		Set<Paso> pasos = trayectoria.getPasos();
