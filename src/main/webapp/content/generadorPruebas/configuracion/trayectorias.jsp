@@ -74,9 +74,9 @@
 					</tr>
 				</thead>
 				<tbody>
-				<s:iterator value="listTrayectoria" var="trayectoria" status="s">
-					<tr class="${'filaCU'}${trayectoria.id}">
-						<td><s:property value="%{#trayectoria.clave}"/></td>
+				<s:iterator value="t" var="trayectoria">
+					<tr class="${'filaCU'}${trayectoria.CasoUsoElementoid}">
+						<td><s:property value="%{#trayectoria.CasoUsoElementoid}"/></td>
 						<td><s:property value="Cualquier cosa"/></td>
 						
 						<td align="center">

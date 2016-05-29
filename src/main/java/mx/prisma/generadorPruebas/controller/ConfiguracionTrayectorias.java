@@ -64,6 +64,7 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 	private String jsonAcciones;
 	private String jsonImagenesPantallasAcciones;
 	
+	@SuppressWarnings("unchecked")
 	public String prepararConfiguracion() throws Exception {
 		String resultado;
 
@@ -86,10 +87,14 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 		}
 		//tray = TrayectoriaBs.consultarTrayectoriaxCasoUso(casoUso);
 		listTrayectoria = TrayectoriaBs.consultarTrayectoriaxCasoUso(casoUso);
+		System.out.println(listTrayectoria);
 		if(listTrayectoria==null){
 			System.out.println("Está vacío!");
 		}
-		SessionManager.set(listTrayectoria, "trayectoria");
+		for(int i=0; i<listTrayectoria.size(); i++){
+			Trayectoria t = listTrayectoria.get(i);
+			System.out.println(t.getId());
+		}
 		this.setListTrayectoria(listTrayectoria);
 		return "pantallaConfiguracionTrayectorias";
 	}

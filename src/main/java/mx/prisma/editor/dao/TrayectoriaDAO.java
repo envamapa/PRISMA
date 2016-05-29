@@ -74,10 +74,12 @@ public class TrayectoriaDAO extends GenericDAO {
 	@SuppressWarnings("unchecked")
 	public List<Trayectoria> consultarTrayectoriaxCasoUso(CasoUso idCaso){
 		List<Trayectoria> listTrayectoria = null;
+		Trayectoria trayectoria = null;
 		try{
 			System.out.println("Id caso: "+idCaso.getId());
 			session.beginTransaction();
-		    Query query = session.createQuery("from Trayectoria as t,CasoUso as c where t.id= :idCaso");
+			
+		    Query query = session.createQuery("from Trayectoria where CasoUsoElementoid= :idCaso");
 		    query.setParameter("idCaso", idCaso.getId());
 		    listTrayectoria =  query.list();
 			session.getTransaction().commit();
