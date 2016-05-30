@@ -47,8 +47,8 @@ import mx.prisma.util.SessionManager;
 @ResultPath("/content/generadorPruebas/")
 @Results({
 	@Result(name = "pantallaConfiguracionTrayectorias", type = "dispatcher", location = "configuracion/trayectorias.jsp"),
-	@Result(name = "trayectoria", type = "redirectAction", params = {
-		"actionName", "trayectoria" })})
+	@Result(name = "trayectorias", type = "redirectAction", params = {
+		"actionName", "trayectorias" })})
 	
 public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 
@@ -100,7 +100,6 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 			tray = listTrayectoria.get(i);
 			System.out.println(tray.getId());
 			aux=tray.getClave();
-			SessionManager.set(tray, "trayectorias");
 			System.out.println(tray.getClave());
 		}
 		this.setListTrayectoria(listTrayectoria);

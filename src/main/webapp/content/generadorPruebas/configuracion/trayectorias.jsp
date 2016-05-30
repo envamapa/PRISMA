@@ -74,9 +74,9 @@
 					</tr>
 				</thead>
 				<tbody>
-				<s:iterator value="Tray">
+				<s:iterator value="ListTrayectoria" var="t">
 					<tr class="${'filaCU'}${trayectoria.Id}">
-						<td><s:property value="'Trayectoria '+Tray.Clave"/></td>
+						<td><s:property value="'Trayectoria '+#t.Clave"/></td>
 						<td><s:property value="No configurado"/></td>
 						
 						<td align="center">
