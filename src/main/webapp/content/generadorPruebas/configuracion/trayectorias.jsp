@@ -66,7 +66,7 @@
 						</s:a>
 						</td>
 				</tr>-->
-				<thead>
+			 <thead>
 					<tr>
 						<th><s:text name="colTrayectoria"/></th>
 						<th style="width: 20%;"><s:text name="colEstado"/></th>
@@ -74,10 +74,10 @@
 					</tr>
 				</thead>
 				<tbody>
-				<s:iterator value="t" var="trayectoria">
-					<tr class="${'filaCU'}${trayectoria.CasoUsoElementoid}">
-						<td><s:property value="%{#trayectoria.CasoUsoElementoid}"/></td>
-						<td><s:property value="Cualquier cosa"/></td>
+				<s:iterator value="Tray">
+					<tr class="${'filaCU'}${trayectoria.Id}">
+						<td><s:property value="'Trayectoria '+Tray.Clave"/></td>
+						<td><s:property value="No configurado"/></td>
 						
 						<td align="center">
 							<s:url var="urlConfigurarTrayectoria"

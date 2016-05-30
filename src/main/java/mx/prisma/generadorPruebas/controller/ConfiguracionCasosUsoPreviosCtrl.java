@@ -93,7 +93,11 @@ public class ConfiguracionCasosUsoPreviosCtrl extends ActionSupportPRISMA {
 		
 		listCU = CuBs.obtenerCaminoPrevioMasCorto(casoUso);
 		SessionManager.set(listCU, "casosUsoPrevios");
-		
+		/*System.out.println(listCU);
+		for(int i=0; i<listCU.size(); i++){
+			CasoUso c = listCU.get(i);
+			System.out.println(c.getId());
+		}*/
 		SessionManager.delete("idPrevio");
 		
 		@SuppressWarnings("unchecked")

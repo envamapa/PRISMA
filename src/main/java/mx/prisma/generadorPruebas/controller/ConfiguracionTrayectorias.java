@@ -45,7 +45,11 @@ import mx.prisma.util.PRISMAValidacionException;
 import mx.prisma.util.SessionManager;
 
 @ResultPath("/content/generadorPruebas/")
-@Results({@Result(name = "pantallaConfiguracionTrayectorias", type = "dispatcher", location = "configuracion/trayectorias.jsp")})
+@Results({
+	@Result(name = "pantallaConfiguracionTrayectorias", type = "dispatcher", location = "configuracion/trayectorias.jsp"),
+	@Result(name = "trayectoria", type = "redirectAction", params = {
+		"actionName", "trayectoria" })})
+	
 public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 
 	private static final long serialVersionUID = 1L;
@@ -63,11 +67,11 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 	private String jsonEntradas;
 	private String jsonAcciones;
 	private String jsonImagenesPantallasAcciones;
+	private String aux;
 	
 	@SuppressWarnings("unchecked")
 	public String prepararConfiguracion() throws Exception {
 		String resultado;
-
 		colaborador = SessionManager.consultarColaboradorActivo();
 		proyecto = SessionManager.consultarProyectoActivo();
 		modulo = SessionManager.consultarModuloActivo();
@@ -85,21 +89,25 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 			resultado = Action.LOGIN;
 			return resultado;
 		}
-		//tray = TrayectoriaBs.consultarTrayectoriaxCasoUso(casoUso);
+	
 		listTrayectoria = TrayectoriaBs.consultarTrayectoriaxCasoUso(casoUso);
+		SessionManager.set(listTrayectoria, "trayectorias");
 		System.out.println(listTrayectoria);
 		if(listTrayectoria==null){
 			System.out.println("Está vacío!");
 		}
 		for(int i=0; i<listTrayectoria.size(); i++){
-			Trayectoria t = listTrayectoria.get(i);
-			System.out.println(t.getId());
+			tray = listTrayectoria.get(i);
+			System.out.println(tray.getId());
+			aux=tray.getClave();
+			SessionManager.set(tray, "trayectorias");
+			System.out.println(tray.getClave());
 		}
 		this.setListTrayectoria(listTrayectoria);
 		return "pantallaConfiguracionTrayectorias";
 	}
 	
-	/*public String configurar() {
+	public String configurar() {
 		String resultado;
 		
 		try {
@@ -135,9 +143,9 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 			resultado = "cu";
 		}
 		return resultado;
-	}*/
+	}
 	
-	/*public String prepararConfiguracionCasoUso() {
+	public String prepararConfiguracionCasoUso() {
 		Map<String, Object> session = null;
 		String resultado;
 		try {
@@ -159,20 +167,15 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 				resultado = Action.LOGIN;
 				return resultado;
 			}
-			
-			
 			previo = SessionManager.consultarCasoUsoPrevio();
-			
 			if (previo == null) {
 				session = ActionContext.getContext().getSession();
 				session.put("idPrevio", idCUPrevio);
 				previo = SessionManager.consultarCasoUsoPrevio();
 			}
-
 			if(jsonEntradas == null || jsonEntradas.isEmpty()) {
 				obtenerJsonCamposEntradas(previo);
 			}
-			
 			if(jsonAcciones == null || jsonAcciones.isEmpty()) {
 				obtenerJsonCamposAcciones(previo);
 			}
@@ -181,15 +184,12 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 			SessionManager.set(this.getActionErrors(), "mensajesError");
 			resultado = "pantallaConfiguracionCasosUsoPrevios";
 		}
-		
-		
 		return "pantallaConfiguracionCasoUsoPrevio";
-	}*/
+	}
 	
-	/*public String configurarCasoUso() throws Exception {
+	public String configurarCasoUso() throws Exception {
 		String resultado;
 		try {
-			
 			modificarEntradas(true);
 			modificarAcciones(true);
 			
@@ -214,21 +214,18 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 			SessionManager.set(this.getActionErrors(), "mensajesError");
 			resultado = "cu";
 		}
-		
 		return resultado;
-	}*/
+	}
 	
-	/*public String guardarCasoUso() throws Exception {
+	public String guardarCasoUso() throws Exception {
 		String resultado;
 		try {
-			
 			modificarEntradas(false);
 			modificarAcciones(false);
 			
 			previo = SessionManager.consultarCasoUsoPrevio();
 			ElementoBs.modificarEstadoElemento(previo, Estado.LIBERADO);
-			
-			
+
 			addActionMessage(getText("MSG1", new String[] { "La", "Configuración del caso de uso",
 			"guardada" }));
 			SessionManager.set(this.getActionMessages(), "mensajesAccion");
@@ -246,11 +243,10 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 			SessionManager.set(this.getActionErrors(), "mensajesError");
 			resultado = "cu";
 		}
-		
 		return resultado;
-	}*/
+	}
 	
-	/*private void modificarEntradas(boolean validarObligatorios) throws Exception {
+	private void modificarEntradas(boolean validarObligatorios) throws Exception {
 		if (jsonEntradas != null && !jsonEntradas.equals("")) {
 			List<Entrada> entradasVista = JsonUtil.mapJSONToArrayList(this.jsonEntradas, Entrada.class);
 			
@@ -267,7 +263,6 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 						if(valorBD.getId() != veVista.getId()) {
 							valores.add(valorBD);
 						}
-						
 						if(valorBD.getId().equals(veVista.getId())){
 							veValido = valorBD;
 						}
@@ -290,9 +285,9 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 				EntradaBs.modificarEntrada(entradaBD, validarObligatorios);
 			}
 		}
-	}*/
+	}
 	
-	/*private void modificarAcciones(boolean validarObligatorios) throws Exception {
+	private void modificarAcciones(boolean validarObligatorios) throws Exception {
 		if(jsonAcciones != null && !jsonAcciones.equals("")) {
 			List<Accion> accionesVista = JsonUtil.mapJSONToArrayList(this.jsonAcciones, Accion.class);
 			for(Accion accionVista : accionesVista) {
@@ -303,12 +298,11 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 			}
 		}
 		
-	}*/
+	}
 
-	/*private void obtenerJsonCamposEntradas(CasoUso previo) throws Exception{
+	private void obtenerJsonCamposEntradas(CasoUso previo) throws Exception{
 		
 		List<Entrada> entradasAux = new ArrayList<Entrada>(previo.getEntradas());
-
 		List<Entrada> entradas = new ArrayList<Entrada>();
 		for(Entrada entrada : entradasAux) {
 			Entrada entradaAux = new Entrada();
@@ -345,9 +339,9 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 			
 		} 
 		jsonEntradas = JsonUtil.mapListToJSON(entradas);
-	}*/
+	}
 	
-	/*private void obtenerJsonCamposAcciones(CasoUso previo) {
+	private void obtenerJsonCamposAcciones(CasoUso previo) {
 		Trayectoria trayectoriaPrincipal = CuBs.obtenerTrayectoriaPrincipal(previo);
 		
 		if(trayectoriaPrincipal != null) {
@@ -388,19 +382,23 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 			jsonAcciones = JsonUtil.mapListToJSON(acciones);
 			jsonImagenesPantallasAcciones = JsonUtil.mapListToJSON(imagenesPantallaAcciones);
 		}
-	}*/
-
-	/*public List<CasoUso> getListCU() {
+	}
+	public Trayectoria getTray(){
+		return tray;
+	}
+	public void setTray(Trayectoria tray){
+		this.tray=tray;
+	}
+	public List<CasoUso> getListCU() {
 		return listCU;
 	}
 
 	public void setListCU(List<CasoUso> listCU) {
 		this.listCU = listCU;
-	}*/
-	public List<Trayectoria> getListTrayectora(){
+	}
+	public List<Trayectoria> getListTrayectoria(){
 		return listTrayectoria;
 	}
-	
 	public void setListTrayectoria(List<Trayectoria> listTrayectoria){
 		this.listTrayectoria = listTrayectoria;
 	}
@@ -443,8 +441,7 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 	public void setIdCU(Integer idCU) {
 		this.idCU = idCU;
 	}
-
-	/*public Integer getIdCUPrevio() {
+	public Integer getIdCUPrevio() {
 		return idCUPrevio;
 	}
 
@@ -483,7 +480,7 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 	public void setJsonImagenesPantallasAcciones(
 			String jsonImagenesPantallasAcciones) {
 		this.jsonImagenesPantallasAcciones = jsonImagenesPantallasAcciones;
-	}*/
+	}
 
 	
 	
