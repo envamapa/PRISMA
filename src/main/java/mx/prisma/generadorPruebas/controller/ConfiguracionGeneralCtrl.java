@@ -5,6 +5,7 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import mx.prisma.admin.model.Colaborador;
@@ -13,12 +14,15 @@ import mx.prisma.bs.AccessBs;
 import mx.prisma.bs.AnalisisEnum.CU_CasosUso;
 import mx.prisma.editor.bs.CuBs;
 import mx.prisma.editor.bs.ElementoBs;
+import mx.prisma.editor.bs.TrayectoriaBs;
 import mx.prisma.editor.bs.ElementoBs.Estado;
 import mx.prisma.editor.model.CasoUso;
 import mx.prisma.editor.model.Modulo;
+import mx.prisma.editor.model.Trayectoria;
 import mx.prisma.generadorPruebas.bs.ConfiguracionGeneralBs;
 import mx.prisma.generadorPruebas.model.ConfiguracionBaseDatos;
 import mx.prisma.generadorPruebas.model.ConfiguracionHttp;
+import mx.prisma.generadorPruebas.model.ConfiguracionTrayectorias;
 import mx.prisma.util.ActionSupportPRISMA;
 import mx.prisma.util.ErrorManager;
 import mx.prisma.util.PRISMAException;
@@ -43,6 +47,8 @@ import com.opensymphony.xwork2.ActionContext;
 			@Result(name = "pantallaConfiguracionGeneral", type = "dispatcher", location = "configuracion/general.jsp"),
 			@Result(name = "ultimoPaso", type = "redirectAction", params = {
 					"actionName", "configuracion-caso-uso!prepararConfiguracion"}),
+			@Result(name = "trayectorias", type = "redirectAction", params = {
+					"actionName", "trayectorias" }),
 			@Result(name = "conexion", type = "json", params = { "root",
 					"resultadoConexion" }),
 			@Result(name = "siguiente", type = "redirectAction", params = {
@@ -52,17 +58,20 @@ import com.opensymphony.xwork2.ActionContext;
 public class ConfiguracionGeneralCtrl extends ActionSupportPRISMA {
 	private static final long serialVersionUID = 1L;
 	private ConfiguracionBaseDatos cbd;
+	private ConfiguracionTrayectorias cty;
 	private ConfiguracionHttp chttp;
 	private Colaborador colaborador;
 	private Proyecto proyecto;
 	private Modulo modulo;
 	private Integer idCU;
+	private List<Trayectoria> listTrayectoria;
 	private CasoUso casoUso;
 	private String resultadoConexion;
 	private String url;
 	private String driver;
 	private String usuario;
 	private String contrasenia;
+	private int id;
 	public String prepararConfiguracion() throws Exception {
 		Map<String, Object> session = null;
 		
@@ -91,7 +100,9 @@ public class ConfiguracionGeneralCtrl extends ActionSupportPRISMA {
 			resultado = Action.LOGIN;
 			return resultado;
 		}
-		
+		listTrayectoria = TrayectoriaBs.consultarTrayectoriaxCasoUso(casoUso);
+		SessionManager.set(listTrayectoria, "trayectorias");
+		this.setListTrayectoria(listTrayectoria);
 		@SuppressWarnings("unchecked")
 		Collection<String> msjs = (Collection<String>) SessionManager
 				.get("mensajesAccion");
@@ -151,6 +162,12 @@ public class ConfiguracionGeneralCtrl extends ActionSupportPRISMA {
 			
 			ElementoBs.modificarEstadoElemento(casoUso, Estado.PRECONFIGURADO);
 			
+			//Aquí tendríamos que obtener las trayectorias seleccionadas y guardarlas.
+			
+			//cty.setCasoUso(casoUso);
+			//cty.setId(getId());
+			System.out.println("Prueba :"+getId());
+			System.out.println("Prueba :"+isCheckMe());
 			resultado = "siguiente";
 			
 			addActionMessage(getText("MSG1", new String[] { "La", "Configuración general",
@@ -216,9 +233,7 @@ public class ConfiguracionGeneralCtrl extends ActionSupportPRISMA {
 			casoUso.setConfiguracionHttp(chttpBD);
 			
 			ElementoBs.modificarEstadoElemento(casoUso, Estado.PRECONFIGURADO);
-			
-			
-			
+		
 			addActionMessage(getText("MSG1", new String[] { "La", "Configuración general",
 			"guardada" }));
 			SessionManager.set(this.getActionMessages(), "mensajesAccion");
@@ -277,7 +292,13 @@ public class ConfiguracionGeneralCtrl extends ActionSupportPRISMA {
 		}
 		return "conexion";
 	}
-
+	
+	public List<Trayectoria> getListTrayectoria(){
+		return listTrayectoria;
+	}
+	public void setListTrayectoria(List<Trayectoria> listTrayectoria){
+		this.listTrayectoria = listTrayectoria;
+	}
 	public Colaborador getColaborador() {
 		return colaborador;
 	}
@@ -330,6 +351,36 @@ public class ConfiguracionGeneralCtrl extends ActionSupportPRISMA {
 		return cbd;
 	}
 
+	public void setCty(ConfiguracionTrayectorias cty) {
+		this.cty = cty;
+	}
+	
+	public ConfiguracionTrayectorias getCty() {
+		if(cty == null) {
+			cty = new ConfiguracionTrayectorias();
+			cty.setCasoUso(casoUso);
+		}
+		return cty;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	private List<String> checkMe;
+	
+	public List<String> isCheckMe() {
+		return checkMe;
+	}
+
+	public void setCheckMe(List<String> checkMe) {
+		this.checkMe = checkMe;
+	}
+	
 	public void setCbd(ConfiguracionBaseDatos cbd) {
 		this.cbd = cbd;
 	}

@@ -636,7 +636,7 @@ public class ConfiguracionCasoUsoCtrl extends ActionSupportPRISMA {
 		
 	}
 	
-	private void obtenerJsonCamposAcciones(CasoUso casoUso) {
+	private void obtenerJsonCamposAcciones(CasoUso casoUso) { //HERE
 		
 		List<Accion> accionesAux = new ArrayList<Accion>();
 		for(Trayectoria trayectoria : casoUso.getTrayectorias()) {

@@ -92,16 +92,6 @@ public class ConfiguracionTrayectorias extends ActionSupportPRISMA{
 	
 		listTrayectoria = TrayectoriaBs.consultarTrayectoriaxCasoUso(casoUso);
 		SessionManager.set(listTrayectoria, "trayectorias");
-		System.out.println(listTrayectoria);
-		if(listTrayectoria==null){
-			System.out.println("Está vacío!");
-		}
-		for(int i=0; i<listTrayectoria.size(); i++){
-			tray = listTrayectoria.get(i);
-			System.out.println(tray.getId());
-			aux=tray.getClave();
-			System.out.println(tray.getClave());
-		}
 		this.setListTrayectoria(listTrayectoria);
 		return "pantallaConfiguracionTrayectorias";
 	}

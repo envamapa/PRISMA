@@ -77,7 +77,7 @@
 				<s:iterator value="ListTrayectoria" var="t">
 					<tr class="${'filaCU'}${trayectoria.Id}">
 						<td><s:property value="'Trayectoria '+#t.Clave"/></td>
-						<td><s:property value="No configurado"/></td>
+						<td><s:property value="'No configurado'"/></td>
 						
 						<td align="center">
 							<s:url var="urlConfigurarTrayectoria"
@@ -105,8 +105,12 @@
 				onclick="location.href='${urlAnterior}?idCU=${idCU}'"
 				value="Anterior" />
 		
-			<s:submit class="boton" value="Siguiente"/><!--Se supone que al darle click en siguiente, se finaliza la configuración. -->
-
+			<s:submit class="boton" value="Siguiente"/>
+			
+			<!--  <input class="boton" type="button"
+				onclick="siguiente();"
+				value="Siguiente" />-->
+				
 			<s:url var="urlGestionarCU"
 				value="%{#pageContext.request.contextPath}/cu">
 			</s:url>

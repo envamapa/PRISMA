@@ -90,52 +90,24 @@
 		<div class="formulario">
 			<div class="tituloFormulario">Trayectorias de la Prueba</div>
 			<p class="instrucciones">Seleccione las trayectorias que desea validar en esta prueba.</p>
-			<table class="seccion" cellspacing="0" width="100%">
-				<!-- <tr>
-					<td><p class="instrucciones"><input type="checkbox" value="1"/>Seleccionar todas</p></td>
-					<td><p class="instrucciones"><input type="checkbox" value="1"/>Trayectoria alternativa C</p></td>
-				</tr>
-				<tr>
-					<td><p class="instrucciones"><input type="checkbox" value="1"/>Trayectoria principal</p></td>
-					<td><p class="instrucciones"><input type="checkbox" value="1"/>Trayectoria alternativa D</p></td>
-				</tr>
-				<tr>
-					<td><p class="instrucciones"><input type="checkbox" value="1"/>Trayectoria alternativa A</p></td>
-					<td><p class="instrucciones"><input type="checkbox" value="1"/>Trayectoria alternativa E</p></td>
-				</tr>-->
-				
-				
+			<div class="seccion">
+			<table class="tablaGestion"  id="gestion" cellspacing="0" width="100%">
 				<thead>
 					<tr>
-						<th><s:text name="colCasoUso"/></th>
-						<th style="width: 20%;"><s:text name="colEstado"/></th>
+						<th><s:text name="colTrayectoria"/></th>
 						<th style="width: 20%;"><s:text name="colAcciones"/></th>
 					</tr>
 				</thead>
 				<tbody>
-				<s:iterator value="listCU" var="cu">
-					<tr class="${'filaCU'}${cu.estadoElemento.id}">
-						<td><s:property value="%{#cu.clave + #cu.numero + ' ' +#cu.nombre}"/></td>
-						<td><s:property value="%{#cu.estadoElemento.nombre}"/></td>
-						<td align="center">
-							<!-- Configurar caso de uso -->
-							<s:url var="urlConfigurarCU"
-								value="%{#pageContext.request.contextPath}/configuracion-casos-uso-previos!prepararConfiguracionCasoUso">
-								<s:param name="idCUPrevio" value="%{#cu.id}"></s:param>
-							</s:url>			
-							<s:a href="%{urlConfigurarCU}">
-								<img id="" class="button" title="Configurar Caso de uso"
-										src="${pageContext.request.contextPath}/resources/images/icons/configurar.png" />
-							</s:a>
-						</td>
+				<s:iterator value="ListTrayectoria" var="t">
+					<tr class="${'filaCU'}${trayectoria.Id}">
+						<td><s:property value="'Trayectoria '+#t.Clave"/></td>
+						<td><center><s:checkbox name="checkMe" fieldValue="Trayectoria %{#t.Clave}"/></center></td>
 					</tr>
 				</s:iterator>
 				</tbody>
-				
-				
-				
 			</table>
-			
+			</div>
 			
 		</div>
 		

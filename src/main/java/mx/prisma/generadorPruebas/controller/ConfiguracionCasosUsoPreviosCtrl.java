@@ -90,7 +90,7 @@ public class ConfiguracionCasosUsoPreviosCtrl extends ActionSupportPRISMA {
 			resultado = Action.LOGIN;
 			return resultado;
 		}
-		
+		//Aquí de alguna manera, tendríamos que recibir la lista de trayectorias seleccionadas.
 		listCU = CuBs.obtenerCaminoPrevioMasCorto(casoUso);
 		SessionManager.set(listCU, "casosUsoPrevios");
 		/*System.out.println(listCU);
