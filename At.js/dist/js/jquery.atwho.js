@@ -302,7 +302,7 @@ Controller = (function() {
     }
     data.push(this);
     alias = this.getOpt('alias');
-    eventName = alias ? name + "-" + alias + ".atwho" : name + ".atwho";
+    eventName = alias ? name + "·" + alias + ".atwho" : name + ".atwho";
     return this.$inputor.trigger(eventName, data);
   };
 
@@ -946,7 +946,7 @@ DEFAULT_CALLBACKS = {
     _a = decodeURI("%C3%80");
     _y = decodeURI("%C3%BF");
     space = acceptSpaceBar ? "\ " : "";
-    regexp = new RegExp(flag + "([A-Za-z" + _a + "-" + _y + "0-9_" + space + "\.\+\-]*)$|" + flag + "([^\\x00-\\xff]*)$", 'gi');
+    regexp = new RegExp(flag + "([A-Za-z" + _a + "·" + _y + "0-9_" + space + "\.\+\-]*)$|" + flag + "([^\\x00-\\xff]*)$", 'gi');
     match = regexp.exec(subtext);
     if (match) {
       return match[2] || match[1];

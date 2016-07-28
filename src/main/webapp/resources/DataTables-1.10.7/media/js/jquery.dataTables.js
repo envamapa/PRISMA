@@ -4639,7 +4639,7 @@
 						x = dataA[ sort.col ];
 						y = dataB[ sort.col ];
 	
-						fn = oExtSort[ sort.type+"-"+sort.dir ] || oExtSort[ "string-"+sort.dir ];
+						fn = oExtSort[ sort.type+"·"+sort.dir ] || oExtSort[ "string-"+sort.dir ];
 						test = fn( x, y );
 						if ( test !== 0 ) {
 							return test;
@@ -13619,7 +13619,7 @@
 		 *      function( settings, data, dataIndex ) {
 		 *        var min = document.getElementById('min').value * 1;
 		 *        var max = document.getElementById('max').value * 1;
-		 *        var version = data[3] == "-" ? 0 : data[3]*1;
+		 *        var version = data[3] == "·" ? 0 : data[3]*1;
 		 *
 		 *        if ( min == "" && max == "" ) {
 		 *          return true;
@@ -13940,7 +13940,7 @@
 			 *    // Numeric ordering of formatted numbers with a pre-formatter
 			 *    $.extend( $.fn.dataTable.ext.type.order, {
 			 *      "string-pre": function(x) {
-			 *        a = (a === "-" || a === "") ? 0 : a.replace( /[^\d\-\.]/g, "" );
+			 *        a = (a === "·" || a === "") ? 0 : a.replace( /[^\d\-\.]/g, "" );
 			 *        return parseFloat( a );
 			 *      }
 			 *    } );

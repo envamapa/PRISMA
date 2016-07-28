@@ -79,7 +79,7 @@ public class TrayectoriaDAO extends GenericDAO {
 			System.out.println("Id caso: "+idCaso.getId());
 			session.beginTransaction();
 			
-		    Query query = session.createQuery("from Trayectoria where CasoUsoElementoid= :idCaso");
+		    Query query = session.createQuery("from Trayectoria where CasoUsoElementoid= :idCaso and alternativa=1");
 		    query.setParameter("idCaso", idCaso.getId());
 		    listTrayectoria =  query.list();
 			session.getTransaction().commit();

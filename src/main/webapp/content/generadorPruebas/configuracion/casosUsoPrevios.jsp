@@ -77,7 +77,9 @@
 			<input class="boton" type="button"
 				onclick="location.href='${urlGestionarCU}'"
 				value="Cancelar" />
+				<s:property value="checkMe"/>
 		</div>
+		
 	</s:form>
 	
 </body>

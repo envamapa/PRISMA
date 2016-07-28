@@ -53,7 +53,7 @@ INSERT INTO PRISMA.Elemento (id, clave, numero, nombre, descripcion, EstadoEleme
 INSERT INTO PRISMA.ReglaNegocio (Elementoid, redaccion, TipoReglaNegocioid, Atributoid_unicidad) VALUES ('9', 'El nombre de los elementos del mismo tipo no puede repetirse.', '3', '4');
 
 INSERT INTO PRISMA.Elemento (id, clave, numero, nombre, descripcion, EstadoElementoid, Proyectoid) VALUES ('10', 'RN', '61', 'Nombre del actor', 'Los nombres de los elementos no pueden contener coma, punto, punto medio, dos puntos o guión bajo.', '1', '1');
-INSERT INTO PRISMA.ReglaNegocio (Elementoid, redaccion, TipoReglaNegocioid, expresionRegular, Atributoid_expReg) VALUES ('10', 'Los nombres de los elementos no pueden contener coma, punto, punto medio, dos puntos o guión bajo.', '9', '[^,._·:]*$', '4');
+INSERT INTO PRISMA.ReglaNegocio (Elementoid, redaccion, TipoReglaNegocioid, expresionRegular, Atributoid_expReg) VALUES ('10', 'Los nombres de los elementos no pueden contener coma, punto, punto medio, dos puntos o guión bajo.', '9', '[^,._-:]*$', '4');
 
 INSERT INTO PRISMA.Elemento (id, clave, numero, nombre, descripcion, EstadoElementoid, Proyectoid) VALUES ('11', 'RN', '62', 'Tipo de dato correcto', 'La información que el usuario proporcione, debe ser del tipo definido en el modelo conceptual.', '1', '1');
 INSERT INTO PRISMA.ReglaNegocio (Elementoid, redaccion, TipoReglaNegocioid) VALUES ('11', 'La información que el usuario proporcione, debe ser del tipo definido en el modelo conceptual.', '6');
@@ -71,7 +71,7 @@ INSERT INTO PRISMA.Parametro (id, nombre, descripcion, Proyectoid) VALUES ('7', 
 INSERT INTO PRISMA.Parametro (id, nombre, descripcion, Proyectoid) VALUES ('8', 'ATRIBUTO', 'Es el nombre del atributo al que se desea hacer referencia.', '1');
 
 INSERT INTO PRISMA.Elemento (id, clave, numero, nombre, descripcion, EstadoElementoid, Proyectoid) VALUES ('13', 'MSG', '1', 'Operación exitosa', 'Notificar al actor que la operación se ha realizado de forma exitosa.', '1', '1');
-INSERT INTO PRISMA.Mensaje (Elementoid, redaccion, parametrizado) VALUES ('13', '$PARAM·1 PARAM·2 ha sido PARAM·3 exitosamente.', '1');
+INSERT INTO PRISMA.Mensaje (Elementoid, redaccion, parametrizado) VALUES ('13', '$PARAM-1 PARAM-2 ha sido PARAM-3 exitosamente.', '1');
 INSERT INTO PRISMA.Mensaje_Parametro (MensajeElementoid, Parametroid) VALUES ('13', '1');
 INSERT INTO PRISMA.Mensaje_Parametro (MensajeElementoid, Parametroid) VALUES ('13', '2');
 INSERT INTO PRISMA.Mensaje_Parametro (MensajeElementoid, Parametroid) VALUES ('13', '3');
@@ -80,22 +80,22 @@ INSERT INTO PRISMA.Elemento (id, clave, numero, nombre, descripcion, EstadoEleme
 INSERT INTO PRISMA.Mensaje (Elementoid, redaccion, parametrizado) VALUES ('14', 'Dato obligatorio.', '0');
 
 INSERT INTO PRISMA.Elemento (id, clave, numero, nombre, descripcion, EstadoElementoid, Proyectoid) VALUES ('15', 'MSG', '5', 'Dato incorrecto', 'Notificar al actor que el dato no tiene el formato solicitado.', '1', '1');
-INSERT INTO PRISMA.Mensaje (Elementoid, redaccion, parametrizado) VALUES ('15', '$Dato incorrecto, ingrese un PARAM·4.', '1');
+INSERT INTO PRISMA.Mensaje (Elementoid, redaccion, parametrizado) VALUES ('15', '$Dato incorrecto, ingrese un PARAM-4.', '1');
 INSERT INTO PRISMA.Mensaje_Parametro (MensajeElementoid, Parametroid) VALUES ('15', '4');
 
 INSERT INTO PRISMA.Elemento (id, clave, numero, nombre, descripcion, EstadoElementoid, Proyectoid) VALUES ('16', 'MSG', '6', 'Longitud inválida', 'Notificar al actor que el dato no cumple con la longitud solicitada.', '1', '1');
-INSERT INTO PRISMA.Mensaje (Elementoid, redaccion, parametrizado) VALUES ('16', '$Escriba menos de PARAM·5 PARAM·6.', '1');
+INSERT INTO PRISMA.Mensaje (Elementoid, redaccion, parametrizado) VALUES ('16', '$Escriba menos de PARAM-5 PARAM-6.', '1');
 INSERT INTO PRISMA.Mensaje_Parametro (MensajeElementoid, Parametroid) VALUES ('16', '5');
 INSERT INTO PRISMA.Mensaje_Parametro (MensajeElementoid, Parametroid) VALUES ('16', '6');
 
 INSERT INTO PRISMA.Elemento (id, clave, numero, nombre, descripcion, EstadoElementoid, Proyectoid) VALUES ('17', 'MSG', '7', 'Registro repetido', 'Notificar al actor que el nombre del elemento ya existe.', '1', '1');
-INSERT INTO PRISMA.Mensaje (Elementoid, redaccion, parametrizado) VALUES ('17', '$PARAM·1 PARAM·2 PARAM·7 que desea registrar ya existe.', '1');
+INSERT INTO PRISMA.Mensaje (Elementoid, redaccion, parametrizado) VALUES ('17', '$PARAM-1 PARAM-2 PARAM-7 que desea registrar ya existe.', '1');
 INSERT INTO PRISMA.Mensaje_Parametro (MensajeElementoid, Parametroid) VALUES ('17', '1');
 INSERT INTO PRISMA.Mensaje_Parametro (MensajeElementoid, Parametroid) VALUES ('17', '2');
 INSERT INTO PRISMA.Mensaje_Parametro (MensajeElementoid, Parametroid) VALUES ('17', '7');
 
 INSERT INTO PRISMA.Elemento (id, clave, numero, nombre, descripcion, EstadoElementoid, Proyectoid) VALUES ('18', 'MSG', '23', 'Caracteres inválidos', 'Informar al actor que el dato que ingresó no puede contener coma, punto, punto medio, dos pufTntos o guión bajo.', '1', '1');
-INSERT INTO PRISMA.Mensaje (Elementoid, redaccion, parametrizado) VALUES ('18', '$PARAM·1 PARAM·8 no puede contener coma, punto, punto medio, dos puntos o guión bajo.', '1');
+INSERT INTO PRISMA.Mensaje (Elementoid, redaccion, parametrizado) VALUES ('18', '$PARAM-1 PARAM-8 no puede contener coma, punto, punto medio, dos puntos o guión bajo.', '1');
 INSERT INTO PRISMA.Mensaje_Parametro (MensajeElementoid, Parametroid) VALUES ('18', '1');
 INSERT INTO PRISMA.Mensaje_Parametro (MensajeElementoid, Parametroid) VALUES ('18', '8');
 
@@ -113,7 +113,7 @@ INSERT INTO PRISMA.Accion (id, PantallaElementoid, nombre, TipoAccionid, Pantall
 INSERT INTO PRISMA.Accion (id, PantallaElementoid, nombre, TipoAccionid, PantallaElementoidDestino, descripcion) VALUES ('3', '20', 'Cancelar', '2', '19', 'Permite al actor cancelar el registro del actor.');
 
 INSERT INTO PRISMA.Elemento (id, clave, numero, nombre, descripcion, EstadoElementoid, Proyectoid) VALUES ('21', 'CUE', '7.1', 'Registrar actor', 'Un actor es un rol que va a interactuar con el sistema. Este caso de uso permite al analista registrar un actor', '5', '1');
-INSERT INTO PRISMA.CasoUso (Elementoid, Moduloid, redaccionActores, redaccionEntradas, redaccionSalidas, redaccionReglasNegocio) VALUES ('21', '1', '$ACT·1, ACT·2', '$ATR·4 \n ATR·5 \n ATR·6 \n GLS·6', '$ATR·7 \n MSG·13 \n MSG·14 \n MSG·15 \n MSG·16 \n MSG·17 \n MSG·18 \n MSG·22', '$RN·7 \n RN·8 \n RN·9 \n RN·10 \n RN·11 \n RN·12');
+INSERT INTO PRISMA.CasoUso (Elementoid, Moduloid, redaccionActores, redaccionEntradas, redaccionSalidas, redaccionReglasNegocio) VALUES ('21', '1', '$ACT-1, ACT-2', '$ATR-4 \n ATR-5 \n ATR-6 \n GLS-6', '$ATR-7 \n MSG-13 \n MSG-14 \n MSG-15 \n MSG-16 \n MSG-17 \n MSG-18 \n MSG-22', '$RN-7 \n RN-8 \n RN-9 \n RN-10 \n RN-11 \n RN-12');
 
 
 INSERT INTO PRISMA.Elemento (id, clave, numero, nombre, descripcion, EstadoElementoid, Proyectoid) VALUES ('22', 'MSG', '13', 'Ha ocurrido un error', 'Informar al actor que no es posible realizar la operación debido a que ha ocurrido un error inesperado en el sistema.', '1', '1');
@@ -154,38 +154,38 @@ INSERT INTO PRISMA.Trayectoria (id, clave, alternativa, condicion, CasoUsoElemen
 INSERT INTO PRISMA.Trayectoria (id, clave, alternativa, condicion, CasoUsoElementoid, finCasoUso) VALUES ('7', 'F', '1', 'El actor ingresó un tipo de dato incorrecto.', 21, '0');
 INSERT INTO PRISMA.Trayectoria (id, clave, alternativa, condicion, CasoUsoElementoid, finCasoUso) VALUES ('8', 'G', '1', 'El actor proporciona un dato que excede la longitud máxima.', 21, '0');
 
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('1', '1', '1', '$registrar un ENT·5 oprimiento el botón ACC·1 de la pantalla IU·19.', '1', '1', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('2', '2', '0', '$que exista información referente a la GLS·6 con base en la regla de negocio RN·23. TRAY·2', '1', '5', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('3', '3', '0', '$la pantalla IU·20 en la cual se realizará el registro del actor.', '1', '3', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('4', '4', '1', '$la información del actor en la pantalla IU·20.', '1', '4', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('5', '5', '1', '$registrar al actor oprimiendo el botón ACC·2 de la pantalla IU·20. TRAY·3', '1', '1', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('6', '6', '0', '$que el actor ingrese todos los campos obligatorios con base en la regla de negocio RN·8. TRAY·4', '1', '5', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('7', '7', '0', '$que el nombre del actor no se encuentre registrado en el sistema con base en la regla de negocio RN·9. TRAY·5', '1', '5', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('8', '8', '0', '$que el nombre no contenga caracteres inválidos con base en la regla de negocio RN·10. TRAY·6', '1', '5', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('9', '9', '0', '$que los datos requeridos sean proporcionados correctamente como se especifica en la regla de negocio RN·11. TRAY·7', '1', '5', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('10', '10', '0', '$que los datos requeridos tengan la longitud correcta de acuerdo a la regla de negocio RN·12. TRAY·8', '1', '5', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('1', '1', '1', '$registrar un ENT-5 oprimiento el botón ACC-1 de la pantalla IU-19.', '1', '1', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('2', '2', '0', '$que exista información referente a la GLS-6 con base en la regla de negocio RN-23. TRAY-2', '1', '5', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('3', '3', '0', '$la pantalla IU-20 en la cual se realizará el registro del actor.', '1', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('4', '4', '1', '$la información del actor en la pantalla IU-20.', '1', '4', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('5', '5', '1', '$registrar al actor oprimiendo el botón ACC-2 de la pantalla IU-20. TRAY-3', '1', '1', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('6', '6', '0', '$que el actor ingrese todos los campos obligatorios con base en la regla de negocio RN-8. TRAY-4', '1', '5', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('7', '7', '0', '$que el nombre del actor no se encuentre registrado en el sistema con base en la regla de negocio RN-9. TRAY-5', '1', '5', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('8', '8', '0', '$que el nombre no contenga caracteres inválidos con base en la regla de negocio RN-10. TRAY-6', '1', '5', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('9', '9', '0', '$que los datos requeridos sean proporcionados correctamente como se especifica en la regla de negocio RN-11. TRAY-7', '1', '5', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('10', '10', '0', '$que los datos requeridos tengan la longitud correcta de acuerdo a la regla de negocio RN-12. TRAY-8', '1', '5', NULL);
 INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('11', '11', '0', '$la información del actor en el sistema.', '1', '7', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('12', '12', '0', '$el mensaje MSG·13 en la pantalla IU·19 para indicar al actor que el registro se ha realizado exitosamente.', '1', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('12', '12', '0', '$el mensaje MSG-13 en la pantalla IU-19 para indicar al actor que el registro se ha realizado exitosamente.', '1', '3', NULL);
 
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('13', '1', '0', '$el mensaje MSG·22 en la pantalla IU·19.', '2', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('13', '1', '0', '$el mensaje MSG-22 en la pantalla IU-19.', '2', '3', NULL);
 
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('14', '1', '1', '$cancelar la operación oprimiento el botón ACC·3 de la pantalla IU·20.', '3', '1', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('15', '2', '0', '$la pantalla IU·19.', '3', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('14', '1', '1', '$cancelar la operación oprimiento el botón ACC-3 de la pantalla IU-20.', '3', '1', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('15', '2', '0', '$la pantalla IU-19.', '3', '3', NULL);
 
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('16', '1', '0', '$el mensaje MSG·14 y señala el campo que presenta el error en la pantalla IU·20, indicando al actor que el dato es obligatorio.', '4', '3', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('17', '2', '0', '$con el paso P·4 de la trayectoria principal.', '4', '9', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('16', '1', '0', '$el mensaje MSG-14 y señala el campo que presenta el error en la pantalla IU-20, indicando al actor que el dato es obligatorio.', '4', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('17', '2', '0', '$con el paso P-4 de la trayectoria principal.', '4', '9', NULL);
 
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('18', '1', '0', '$el mensaje MSG·17 y señala el campo que presenta la duplicidad en la pantalla IU·20, indicando al actor que existe un actor con el mismo nombre.', '5', '3', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('19', '2', '0', '$con el paso P·4 de la trayectoria principal.', '5', '9', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('18', '1', '0', '$el mensaje MSG-17 y señala el campo que presenta la duplicidad en la pantalla IU-20, indicando al actor que existe un actor con el mismo nombre.', '5', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('19', '2', '0', '$con el paso P-4 de la trayectoria principal.', '5', '9', NULL);
 
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('20', '1', '0', '$el mensaje MSG·18 y señala el campo que presenta el error en la pantalla IU·20.', '6', '3', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('21', '2', '0', '$con el paso P·4 de la trayectoria principal.', '6', '9', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('20', '1', '0', '$el mensaje MSG-18 y señala el campo que presenta el error en la pantalla IU-20.', '6', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('21', '2', '0', '$con el paso P-4 de la trayectoria principal.', '6', '9', NULL);
 
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('22', '1', '0', '$el mensaje MSG·15 y señala el campo que presenta el error en la pantalla IU·20.', '7', '3', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('23', '2', '0', '$con el paso P·4 de la trayectoria principal.', '7', '9', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('22', '1', '0', '$el mensaje MSG-15 y señala el campo que presenta el error en la pantalla IU-20.', '7', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('23', '2', '0', '$con el paso P-4 de la trayectoria principal.', '7', '9', NULL);
 
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('24', '1', '0', '$el mensaje MSG·16 y señala el campo que presenta el error en la pantalla IU·20.', '8', '3', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('25', '2', '0', '$con el paso P·4 de la trayectoria principal.', '8', '9', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('24', '1', '0', '$el mensaje MSG-16 y señala el campo que presenta el error en la pantalla IU-20.', '8', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('25', '2', '0', '$con el paso P-4 de la trayectoria principal.', '8', '9', NULL);
 
 
 
@@ -286,7 +286,7 @@ INSERT INTO PRISMA.Atributo (id, nombre, descripcion, obligatorio, longitud, Ent
 
 
 INSERT INTO PRISMA.Elemento (id, clave, numero, nombre, descripcion, EstadoElementoid, Proyectoid) VALUES ('30', 'CUE', '7', 'Gestionar actores', 'Este caso de uso permite al analista visualizar los registros de los actores registrados en el sistema. También permiteal actor acceder a las operaciones de registro, consulta, modificación, y eliminación de un actor.', '1', '1'); 
-INSERT INTO PRISMA.CasoUso (Elementoid, Moduloid, redaccionActores, redaccionEntradas, redaccionSalidas, redaccionReglasNegocio) VALUES ('30', '1', '$ACT·1, ACT·2', '$ATR·20', '$ATR·9 \n ATR·8 \n ATR·10 \n ATR·4 \n MSG·31', '$Ninguna');
+INSERT INTO PRISMA.CasoUso (Elementoid, Moduloid, redaccionActores, redaccionEntradas, redaccionSalidas, redaccionReglasNegocio) VALUES ('30', '1', '$ACT-1, ACT-2', '$ATR-20', '$ATR-9 \n ATR-8 \n ATR-10 \n ATR-4 \n MSG-31', '$Ninguna');
 
 
 INSERT INTO PRISMA.Elemento (id, clave, numero, nombre, descripcion, EstadoElementoid, Proyectoid) VALUES ('31', 'MSG', '2', 'No existe información', 'Notificar al actor que aún no existe información registrada en el editor.', '1', '1');
@@ -325,13 +325,13 @@ INSERT INTO PRISMA.Trayectoria (id, clave, alternativa, condicion, CasoUsoElemen
 INSERT INTO PRISMA.Trayectoria (id, clave, alternativa, condicion, CasoUsoElementoid, finCasoUso) VALUES ('10', 'A', '1', 'No existen registros de actores.', '30', '1');
 
 
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('26', '1', '1', '$el botón ACC·4 del proyecto con el que desea trabajar, en la pantalla IU·32.', '9', '6', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('27', '2', '1', '$gestionar los actores seleccionando la opción ACC·5 del menú principal.', '9', '1', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('26', '1', '1', '$el botón ACC-4 del proyecto con el que desea trabajar, en la pantalla IU-32.', '9', '6', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('27', '2', '1', '$gestionar los actores seleccionando la opción ACC-5 del menú principal.', '9', '1', NULL);
 INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('28', '3', '0', '$la información de los actores registrados en el sistema.', '9', '2', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('29', '4', '0', '$la información de los actores en la pantalla IU·19 y las operaciones disponibles.', '9', '3', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('30', '5', '1', '$los actores a través de los botones ACC·1.', '9', '13', 'Gestiona');
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('29', '4', '0', '$la información de los actores en la pantalla IU-19 y las operaciones disponibles.', '9', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('30', '5', '1', '$los actores a través de los botones ACC-1.', '9', '13', 'Gestiona');
 
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('31', '1', '0', '$el mensaje MSG·31 en la pantalla IU·19 para indicar que no existen registros de actores para mostrar.', '10', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('31', '1', '0', '$el mensaje MSG-31 en la pantalla IU-19 para indicar que no existen registros de actores para mostrar.', '10', '3', NULL);
 
 
 INSERT INTO PRISMA.ReferenciaParametro (TipoParametroid, Pasoid, AccionidDestino) VALUES ('8', '26', '4');
@@ -348,7 +348,7 @@ INSERT INTO PRISMA.ReferenciaParametro (TipoParametroid, Pasoid, ElementoidDesti
 INSERT INTO PRISMA.ReferenciaParametro (TipoParametroid, Pasoid, ElementoidDestino) VALUES ('9', '31', '19'); 
 
 
-INSERT INTO PRISMA.Extension (id, CasoUsoElementoid_origen, CasoUsoElementoid_destino, causa, region) VALUES ('1', '30', '21', 'El actor requiere registrar un actor.', '$Paso P·30 de la trayectoria principal.');
+INSERT INTO PRISMA.Extension (id, CasoUsoElementoid_origen, CasoUsoElementoid_destino, causa, region) VALUES ('1', '30', '21', 'El actor requiere registrar un actor.', '$Paso P-30 de la trayectoria principal.');
 
 INSERT INTO PRISMA.ReferenciaParametro (TipoParametroid, Extensionid, PasoidDestino) VALUES ('10', '1', '30'); 
 
@@ -391,7 +391,7 @@ INSERT INTO PRISMA.Accion (id, PantallaElementoid, nombre, TipoAccionid, Pantall
 
 
 INSERT INTO PRISMA.Elemento (id, clave, numero, nombre, descripcion, EstadoElementoid, Proyectoid) VALUES ('39', 'CUE', '13', 'Iniciar sesión', 'Este caso de uso permite al actor iniciar sesión en el sistema.', '1', '1'); 
-INSERT INTO PRISMA.CasoUso (Elementoid, Moduloid, redaccionActores, redaccionEntradas, redaccionSalidas, redaccionReglasNegocio) VALUES ('39', '1', '$ACT·1, ACT·2, ACT·3', '$ATR·15 \n ATR·16', '$MSG·14 \n MSG·16 \n MSG·37', '$RN·8 \n RN·12');
+INSERT INTO PRISMA.CasoUso (Elementoid, Moduloid, redaccionActores, redaccionEntradas, redaccionSalidas, redaccionReglasNegocio) VALUES ('39', '1', '$ACT-1, ACT-2, ACT-3', '$ATR-15 \n ATR-16', '$MSG-14 \n MSG-16 \n MSG-37', '$RN-8 \n RN-12');
 
 
 INSERT INTO PRISMA.CasoUso_Actor (CasoUsoElementoid, ActorElementoid) VALUES ('39', '1');
@@ -419,27 +419,27 @@ INSERT INTO PRISMA.Trayectoria (id, clave, alternativa, condicion, CasoUsoElemen
 
 
 INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('32', '1', '1', '$al sistema por medio de la URL.', '11', '4', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('33', '2', '0', '$la pantalla IU·38.', '11', '3', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('34', '3', '1', '$los datos solicitados en la pantalla IU·38.', '11', '4', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('35', '4', '1', '$el botón ACC·6 en la pantalla IU·38.', '11', '6', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('36', '5', '0', '$que el actor ingrese todos los datos obligatorios de acuerdo a la regla de negocio RN·8. TRAY·12', '11', '5', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('37', '6', '0', '$que los datos requeridos no rebasen la longitud válida de acuerdo a la regla de negocio RN·12. TRAY·13', '11', '5', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('38', '7', '0', '$que el actor se encuentre registrado. TRAY·14', '11', '5', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('39', '8', '0', '$que la contraseña ingresada sea correcta. TRAY·14', '11', '5', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('40', '9', '0', '$la pantalla IU·32.', '11', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('33', '2', '0', '$la pantalla IU-38.', '11', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('34', '3', '1', '$los datos solicitados en la pantalla IU-38.', '11', '4', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('35', '4', '1', '$el botón ACC-6 en la pantalla IU-38.', '11', '6', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('36', '5', '0', '$que el actor ingrese todos los datos obligatorios de acuerdo a la regla de negocio RN-8. TRAY-12', '11', '5', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('37', '6', '0', '$que los datos requeridos no rebasen la longitud válida de acuerdo a la regla de negocio RN-12. TRAY-13', '11', '5', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('38', '7', '0', '$que el actor se encuentre registrado. TRAY-14', '11', '5', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('39', '8', '0', '$que la contraseña ingresada sea correcta. TRAY-14', '11', '5', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('40', '9', '0', '$la pantalla IU-32.', '11', '3', NULL);
 INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('47', '10', '1', '$los proyectos.', '11', '13', 'Gestiona');
 
 
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('41', '1', '0', '$el mensaje MSG·14 y señala el campo que presenta el error en la pantalla IU·38, indicando al actor que el dato es obligatorio.', '12', '3', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('42', '2', '0', '$con el paso P·34 de la trayectoria principal.', '12', '9', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('41', '1', '0', '$el mensaje MSG-14 y señala el campo que presenta el error en la pantalla IU-38, indicando al actor que el dato es obligatorio.', '12', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('42', '2', '0', '$con el paso P-34 de la trayectoria principal.', '12', '9', NULL);
 
 
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('43', '1', '0', '$el mensaje MSG·16 y señala el campo que excede la longitud en la pantalla IU·38.', '13', '3', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('44', '2', '0', '$con el paso P·34 de la trayectoria principal.', '13', '9', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('43', '1', '0', '$el mensaje MSG-16 y señala el campo que excede la longitud en la pantalla IU-38.', '13', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('44', '2', '0', '$con el paso P-34 de la trayectoria principal.', '13', '9', NULL);
 
 
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('45', '1', '0', '$el mensaje MSG·37 para indicar que los datos ingresados son incorrectos.', '14', '3', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('46', '2', '0', '$con el paso P·34 de la trayectoria principal.', '14', '9', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('45', '1', '0', '$el mensaje MSG-37 para indicar que los datos ingresados son incorrectos.', '14', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('46', '2', '0', '$con el paso P-34 de la trayectoria principal.', '14', '9', NULL);
 
 
 
@@ -504,7 +504,7 @@ INSERT INTO PRISMA.Atributo (id, nombre, descripcion, obligatorio, longitud, Ent
 
 
 INSERT INTO PRISMA.Elemento (id, clave, numero, nombre, descripcion, EstadoElementoid, Proyectoid) VALUES ('41', 'CUE', '4', 'Gestionar proyectos', 'Este caso de uso permite al analista visualizar los registros de los proyectos.', '1', '1'); 
-INSERT INTO PRISMA.CasoUso (Elementoid, Moduloid, redaccionActores, redaccionEntradas, redaccionSalidas, redaccionReglasNegocio) VALUES ('41', '1', '$ACT·1, ACT·2', '$Ninguna', '$ATR·17 \n ATR·18 \n MSG·31', '$Ninguna');
+INSERT INTO PRISMA.CasoUso (Elementoid, Moduloid, redaccionActores, redaccionEntradas, redaccionSalidas, redaccionReglasNegocio) VALUES ('41', '1', '$ACT-1, ACT-2', '$Ninguna', '$ATR-17 \n ATR-18 \n MSG-31', '$Ninguna');
 
 
 
@@ -522,12 +522,12 @@ INSERT INTO PRISMA.Trayectoria (id, clave, alternativa, condicion, CasoUsoElemen
 INSERT INTO PRISMA.Trayectoria (id, clave, alternativa, condicion, CasoUsoElementoid, finCasoUso) VALUES ('16', 'A', '1', 'No existen registros de proyectos.', '41', '1');
 
 
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('48', '1', '1', '$gestionar los proyectos presionando la opción ACC·7 del menú principal.', '15', '1', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('49', '2', '0', '$la información de los ENT·40 registrados en el sistema.', '15', '2', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('50', '3', '0', '$la información de los ENT·40 en la pantalla IU·32 y las operaciones disponibles.', '15', '3', NULL);
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('51', '4', '1', '$los proyectos a través de los botones ACC·4.', '15', '13', 'Gestiona');
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('48', '1', '1', '$gestionar los proyectos presionando la opción ACC-7 del menú principal.', '15', '1', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('49', '2', '0', '$la información de los ENT-40 registrados en el sistema.', '15', '2', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('50', '3', '0', '$la información de los ENT-40 en la pantalla IU-32 y las operaciones disponibles.', '15', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('51', '4', '1', '$los proyectos a través de los botones ACC-4.', '15', '13', 'Gestiona');
 
-INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('52', '1', '0', '$el mensaje MSG·31 en la pantalla IU·32 para indicar que no existen registros de proyectos para mostrar.', '16', '3', NULL);
+INSERT INTO PRISMA.Paso (id, numero, realizaActor, redaccion, Trayectoriaid, Verboid, otroVerbo) VALUES ('52', '1', '0', '$el mensaje MSG-31 en la pantalla IU-32 para indicar que no existen registros de proyectos para mostrar.', '16', '3', NULL);
 
 
 
@@ -548,13 +548,13 @@ INSERT INTO PRISMA.ReferenciaParametro (TipoParametroid, Pasoid, ElementoidDesti
 
 
 
-INSERT INTO PRISMA.Extension (id, CasoUsoElementoid_origen, CasoUsoElementoid_destino, causa, region) VALUES ('2', '39', '41', 'El actor requiere gestionar los proyectos.', '$Paso P·47 de la trayectoria principal.');
+INSERT INTO PRISMA.Extension (id, CasoUsoElementoid_origen, CasoUsoElementoid_destino, causa, region) VALUES ('2', '39', '41', 'El actor requiere gestionar los proyectos.', '$Paso P-47 de la trayectoria principal.');
 
 INSERT INTO PRISMA.ReferenciaParametro (TipoParametroid, Extensionid, PasoidDestino) VALUES ('10', '2', '47'); 
 
 
 
-INSERT INTO PRISMA.Extension (id, CasoUsoElementoid_origen, CasoUsoElementoid_destino, causa, region) VALUES ('3', '41', '30', 'El actor requiere gestionar los actores.', '$Paso P·51 de la trayectoria principal.');
+INSERT INTO PRISMA.Extension (id, CasoUsoElementoid_origen, CasoUsoElementoid_destino, causa, region) VALUES ('3', '41', '30', 'El actor requiere gestionar los actores.', '$Paso P-51 de la trayectoria principal.');
 
 INSERT INTO PRISMA.ReferenciaParametro (TipoParametroid, Extensionid, PasoidDestino) VALUES ('10', '3', '51'); 
 

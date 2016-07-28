@@ -50,15 +50,15 @@ public class TokenBs {
 	/*
 	 * Estructura para referenciar elementos:
 	 * 
-	 * Regla de negocio: RN·Número:Nombre Entidad: ENT·Nombre Caso de uso:
-	 * CU·ClaveMódulo·Número:Nombre Pantalla: IU·ClaveMódulo·Número:Nombre
-	 * Mensaje: MSG·Número:Nombre Actor: ACT·Nombre Término Glosario: GLS·Nombre
-	 * Atributo: ATR·Entidad:Nombre Paso:
-	 * P·ClaveCasoUso·NúmeroCasoUso:NombreCasoUso:ClaveTrayectoria·Número
+	 * Regla de negocio: RN-Número:Nombre Entidad: ENT-Nombre Caso de uso:
+	 * CU-ClaveMódulo-Número:Nombre Pantalla: IU-ClaveMódulo-Número:Nombre
+	 * Mensaje: MSG-Número:Nombre Actor: ACT-Nombre Término Glosario: GLS-Nombre
+	 * Atributo: ATR-Entidad:Nombre Paso:
+	 * P-ClaveCasoUso-NúmeroCasoUso:NombreCasoUso:ClaveTrayectoria-Número
 	 * Trayectoria:
-	 * TRAY·ClaveCasoUso·NúmeroCasoUso:NombreCasoUso:ClaveTrayectoria Acción:
-	 * ACC·ClavePantalla·NúmeroPantalla:NombrePantalla:Nombre Parámetros (Msj.)
-	 * PARAM·Nombre
+	 * TRAY-ClaveCasoUso-NúmeroCasoUso:NombreCasoUso:ClaveTrayectoria Acción:
+	 * ACC-ClavePantalla-NúmeroPantalla:NombrePantalla:Nombre Parámetros (Msj.)
+	 * PARAM-Nombre
 	 */
 	public static String tokenRN = "RN" + tokenSeparator1;
 	public static String tokenENT = "ENT" + tokenSeparator1;
@@ -343,7 +343,7 @@ public class TokenBs {
 				}
 				objetos.add(reglaNegocio);
 				break;
-			// TRAY·CUSF·001:s:A
+			// TRAY-CUSF-001:s:A
 			case TRAYECTORIA: // TRAY.CUMODULO.NUM:NOMBRECU:CLAVETRAY
 				if (segmentos.size() != 5) {
 					errorEnToken("la", "trayectoria");
@@ -470,11 +470,11 @@ public class TokenBs {
 	 * Parámetros:
 	 * 
 	 * @cadenaCodificada: Cadena cuyo contenido incluye los tokens en su versión
-	 * edición, por ejemplo: ATR·Producto:Peso.
+	 * edición, por ejemplo: ATR-Producto:Peso.
 	 * 
 	 * Ejemplo:
 	 * 
-	 * El resultado de decodificar la cadena "ATR·Producto:Peso." sería "ATR·1",
+	 * El resultado de decodificar la cadena "ATR-Producto:Peso." sería "ATR-1",
 	 * siendo "1" el id del atributo "Peso".
 	 */
 	public static String codificarCadenaToken(String redaccion,
@@ -845,12 +845,12 @@ public class TokenBs {
 	 * Parámetros:
 	 * 
 	 * @cadenaCodificada: Cadena cuyo contenido incluye los tokens en su versión
-	 * base de datos (cruda), por ejemplo: ATR·1.
+	 * base de datos (cruda), por ejemplo: ATR-1.
 	 * 
 	 * Ejemplo:
 	 * 
-	 * El resultado de decodificar la cadena "ATR·1" sería "ATR·Producto:Peso",
-	 * siendo "ATR·Producto:Peso" el token para referenciar al atributo "Peso"
+	 * El resultado de decodificar la cadena "ATR-1" sería "ATR-Producto:Peso",
+	 * siendo "ATR-Producto:Peso" el token para referenciar al atributo "Peso"
 	 * de la entidad "Producto".
 	 */
 	public static String decodificarCadenasToken(String cadenaCodificada) {
@@ -1057,11 +1057,11 @@ public class TokenBs {
 	 * Parámetros:
 	 * 
 	 * @cadenaCodificada: Cadena cuyo contenido incluye los tokens en su versión
-	 * base de datos (cruda), por ejemplo: ATR·1.
+	 * base de datos (cruda), por ejemplo: ATR-1.
 	 * 
 	 * Ejemplo:
 	 * 
-	 * El resultado de decodificar la cadena "ATR·1" sería "Peso", siendo "Peso"
+	 * El resultado de decodificar la cadena "ATR-1" sería "Peso", siendo "Peso"
 	 * el nombre del atributo cuyo id es 1.
 	 */
 	public static String decodificarCadenaSinToken(String redaccion) {
@@ -1215,7 +1215,7 @@ public class TokenBs {
 	/*
 	 * El método ArrayList<String> segmentarToken(String @token) construye un
 	 * ArrayList de segmentos de un token, por ejemplo: para el token
-	 * "ACT·Profesor", la función devolvería un ArrayList con dos elementos: [0]
+	 * "ACT-Profesor", la función devolvería un ArrayList con dos elementos: [0]
 	 * = ACT [1] = Profesor
 	 * 
 	 * Parámetros:
@@ -1246,8 +1246,8 @@ public class TokenBs {
 	/*
 	 * El método ArrayList<String> procesarTokenIpunt(String cadena) construye
 	 * un ArrayLisy de tokens,ejemplo: para la cadena
-	 * "ATR·Escuela:Nombre, GLS·Clave_Zona" el resultado sería [0] =
-	 * ATR·Escuela:Nombre [1] = GLS·Clave_Zona
+	 * "ATR-Escuela:Nombre, GLS-Clave_Zona" el resultado sería [0] =
+	 * ATR-Escuela:Nombre [1] = GLS-Clave_Zona
 	 * 
 	 * Parámetros:
 	 * 
@@ -1303,8 +1303,8 @@ public class TokenBs {
 	 * correspondiente según la decodificación realizada. Es útil frente a un
 	 * simple replace, porque soluciona el siguiente problema:
 	 * 
-	 * Si se deseara remplazar el segmente de cadena "ACT·1" por "Profesor" en
-	 * la cadena "ACT·1, ACT·11" resultado sería "Profesor, Profesor1" lo cual
+	 * Si se deseara remplazar el segmente de cadena "ACT-1" por "Profesor" en
+	 * la cadena "ACT-1, ACT-11" resultado sería "Profesor, Profesor1" lo cual
 	 * es indeseable por que cada token representa una referencia diferente.
 	 * 
 	 * Este método remplaza únicamente si la subcadena en la que se encuentra el

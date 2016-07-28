@@ -333,7 +333,7 @@ public class AnalizadorPasosBs {
 	}
 		
 	public static String seguimiento(Paso paso) {
-		return paso.getTrayectoria().getCasoUso().getClave() + paso.getTrayectoria().getCasoUso().getNumero() + "-" +  paso.getTrayectoria().getClave() + paso.getNumero();
+		return paso.getTrayectoria().getCasoUso().getClave() + paso.getTrayectoria().getCasoUso().getNumero() + "·" +  paso.getTrayectoria().getClave() + paso.getNumero();
 
 	}
 }

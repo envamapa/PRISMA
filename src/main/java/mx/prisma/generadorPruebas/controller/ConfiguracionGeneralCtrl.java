@@ -14,6 +14,7 @@ import mx.prisma.bs.AccessBs;
 import mx.prisma.bs.AnalisisEnum.CU_CasosUso;
 import mx.prisma.editor.bs.CuBs;
 import mx.prisma.editor.bs.ElementoBs;
+import mx.prisma.editor.bs.TerminoGlosarioBs;
 import mx.prisma.editor.bs.TrayectoriaBs;
 import mx.prisma.editor.bs.ElementoBs.Estado;
 import mx.prisma.editor.model.CasoUso;
@@ -164,10 +165,16 @@ public class ConfiguracionGeneralCtrl extends ActionSupportPRISMA {
 			
 			//Aquí tendríamos que obtener las trayectorias seleccionadas y guardarlas.
 			
-			//cty.setCasoUso(casoUso);
-			//cty.setId(getId());
-			System.out.println("Prueba :"+getId());
-			System.out.println("Prueba :"+isCheckMe());
+			/*cty.setCasoUso(casoUso);
+			TrayectoriaBs.registrarTrayectorias(cty);*/
+			System.out.println("Prueba :"+isCheckMe()); 
+			setCheckMe(isCheckMe());
+			ConfiguracionTrayectorias cty1 = new ConfiguracionTrayectorias();
+			cty1.setCasoUso(casoUso);
+			cty1.setCondicion(isCheckMe());
+			System.out.println(cty1.getCondicion());
+			ConfiguracionCasosUsoPreviosCtrl ccp = new ConfiguracionCasosUsoPreviosCtrl();
+			ccp.setConfigTray(cty1);
 			resultado = "siguiente";
 			
 			addActionMessage(getText("MSG1", new String[] { "La", "Configuración general",
@@ -370,7 +377,7 @@ public class ConfiguracionGeneralCtrl extends ActionSupportPRISMA {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+/////
 	private List<String> checkMe;
 	
 	public List<String> isCheckMe() {
@@ -380,7 +387,7 @@ public class ConfiguracionGeneralCtrl extends ActionSupportPRISMA {
 	public void setCheckMe(List<String> checkMe) {
 		this.checkMe = checkMe;
 	}
-	
+	/////
 	public void setCbd(ConfiguracionBaseDatos cbd) {
 		this.cbd = cbd;
 	}

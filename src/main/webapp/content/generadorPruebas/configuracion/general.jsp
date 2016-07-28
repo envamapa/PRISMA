@@ -102,7 +102,7 @@
 				<s:iterator value="ListTrayectoria" var="t">
 					<tr class="${'filaCU'}${trayectoria.Id}">
 						<td><s:property value="'Trayectoria '+#t.Clave"/></td>
-						<td><center><s:checkbox name="checkMe" fieldValue="Trayectoria %{#t.Clave}"/></center></td>
+						<td><center><s:checkbox name="checkMe" fieldValue="%{#t}"/></center></td><!-- %{#t} -->
 					</tr>
 				</s:iterator>
 				</tbody>

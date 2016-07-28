@@ -9,6 +9,8 @@ import javax.persistence.OneToOne;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.List;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,13 +21,13 @@ import mx.prisma.editor.model.CasoUso;
 public class ConfiguracionTrayectorias implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private String condicion;
+	private List<String> condicion;
 	private CasoUso casoUso;
 
 	public ConfiguracionTrayectorias() {
 	}
 
-	public ConfiguracionTrayectorias(String condicion, CasoUso casoUso) {
+	public ConfiguracionTrayectorias(List<String> condicion, CasoUso casoUso) {
 		this.condicion = condicion;
 		this.casoUso = casoUso;
 	}
@@ -42,11 +44,11 @@ public class ConfiguracionTrayectorias implements java.io.Serializable{
 	}
 
 	@Column(name = "condicion", nullable = false, length = 500)
-	public String getCondicion() {
+	public List<String> getCondicion() {
 		return this.condicion;
 	}
 
-	public void setCondicion(String condicion) {
+	public void setCondicion(List<String> condicion) {
 		this.condicion = condicion;
 	}
 

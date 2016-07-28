@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpSession;
+
 import mx.prisma.admin.model.Colaborador;
 import mx.prisma.admin.model.Proyecto;
 import mx.prisma.bs.AccessBs;
@@ -35,6 +37,7 @@ import mx.prisma.util.JsonUtil;
 import mx.prisma.util.PRISMAException;
 import mx.prisma.util.PRISMAValidacionException;
 import mx.prisma.util.SessionManager;
+import mx.prisma.generadorPruebas.model.ConfiguracionTrayectorias;
 
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.ResultPath;
@@ -69,6 +72,8 @@ public class ConfiguracionCasosUsoPreviosCtrl extends ActionSupportPRISMA {
 	private String jsonEntradas;
 	private String jsonAcciones;
 	private String jsonImagenesPantallasAcciones;
+	private List<String> listTray;
+	private ConfiguracionTrayectorias configTray;
 	
 	public String prepararConfiguracion() throws Exception {
 		String resultado;
@@ -91,13 +96,14 @@ public class ConfiguracionCasosUsoPreviosCtrl extends ActionSupportPRISMA {
 			return resultado;
 		}
 		//Aquí de alguna manera, tendríamos que recibir la lista de trayectorias seleccionadas.
+		
+		HttpSession misession= (HttpSession) request.getSession();
+		ConfiguracionTrayectorias c= (ConfiguracionTrayectorias) misession.getAttribute("configTray");
+		//System.out.println("uno: "+misession.getAttribute("configTray"));
+		System.out.println("dos: "+c.getCondicion());
 		listCU = CuBs.obtenerCaminoPrevioMasCorto(casoUso);
+		
 		SessionManager.set(listCU, "casosUsoPrevios");
-		/*System.out.println(listCU);
-		for(int i=0; i<listCU.size(); i++){
-			CasoUso c = listCU.get(i);
-			System.out.println(c.getId());
-		}*/
 		SessionManager.delete("idPrevio");
 		
 		@SuppressWarnings("unchecked")
@@ -423,6 +429,25 @@ public class ConfiguracionCasosUsoPreviosCtrl extends ActionSupportPRISMA {
 		this.listCU = listCU;
 	}
 
+	/*public List<String> getListTray() {
+		return listTray;
+	}
+
+	public void setListTray(List<String> listTray) {
+		this.listTray = listTray;
+	}*/
+	
+	public ConfiguracionTrayectorias getConfigTray(){
+		return configTray;
+	}
+	
+	public void setConfigTray(ConfiguracionTrayectorias configTray){
+		this.configTray = configTray;
+		HttpSession misession = request.getSession(true);
+		misession.setAttribute("configTray", configTray);
+		
+	}
+	
 	public CasoUso getCasoUso() {
 		return casoUso;
 	}

@@ -61,7 +61,7 @@
 				</tr>
 				<tr>
 					<td> </td>
-					<td><span class="textoAyuda">Para utilizar un parámetro escriba el token PARAM· más el nombre del parámetro.</span></td>
+					<td><span class="textoAyuda">Para utilizar un parámetro escriba el token PARAM- más el nombre del parámetro.</span></td>
 				</tr>
 				<tr>
 						<td class="label obligatorio"><s:text name="labelRedaccion" /></td>

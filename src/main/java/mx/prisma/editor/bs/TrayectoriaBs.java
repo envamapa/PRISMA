@@ -20,6 +20,7 @@ import mx.prisma.editor.model.PostPrecondicion;
 import mx.prisma.editor.model.ReferenciaParametro;
 import mx.prisma.editor.model.Trayectoria;
 import mx.prisma.editor.model.Verbo;
+import mx.prisma.generadorPruebas.model.ConfiguracionTrayectorias;
 import mx.prisma.util.PRISMAException;
 import mx.prisma.util.PRISMAValidacionException;
 import mx.prisma.util.SessionManager;
@@ -50,6 +51,28 @@ public class TrayectoriaBs {
 			throw new Exception();
 		}
 	}
+		
+	/*	public static void registrarTrayectorias(ConfiguracionTrayectorias model) throws Exception {
+			try {
+				validar(model);
+				model.setClave(model.getClave().trim());
+
+				new TrayectoriaDAO().registrarTrayectoria(model);
+			} catch (JDBCException je) {
+				if (je.getErrorCode() == 1062) {
+					throw new PRISMAValidacionException(
+							"La clave de la trayectoria ya existe.", "MSG7",
+							new String[] { "La", "Trayectoria", model.getClave() },
+							"model.clave");
+				}
+				System.out.println("ERROR CODE " + je.getErrorCode());
+				je.printStackTrace();
+				throw new Exception();
+			} catch (HibernateException he) {
+				he.printStackTrace();
+				throw new Exception();
+			}
+	}*/
 
 //	public static void modificarTrayectoria(Trayectoria model,
 //			Actualizacion actualizacion) throws Exception {

@@ -350,7 +350,7 @@ $.widget = function( name, base, prototype ) {
 		namespace = name.split( "." )[ 0 ];
 
 	name = name.split( "." )[ 1 ];
-	fullName = namespace + "-" + name;
+	fullName = namespace + "·" + name;
 
 	if ( !prototype ) {
 		prototype = base;
@@ -16543,7 +16543,7 @@ var effectSlide = $.effects.effect.slide = function( o, done ) {
 	});
 
 	if ( show ) {
-		el.css( ref, positiveMotion ? (isNaN(distance) ? "-" + distance : -distance) : distance );
+		el.css( ref, positiveMotion ? (isNaN(distance) ? "·" + distance : -distance) : distance );
 	}
 
 	// Animation

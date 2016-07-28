@@ -137,8 +137,6 @@
 		</interceptors>
 
 		<default-interceptor-ref name="stack" />
-
-	
 	
 	<global-results>
    		<result name="login" type="redirect">access/</result>
